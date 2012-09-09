@@ -1,0 +1,8 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SmtpMailProfessional06.Form1.resources
+obj\Debug\SmtpMailProfessional06.Properties.Resources.resources
+obj\Debug\SmtpMailProfessional06.csproj.GenerateResource.Cache
+bin\Debug\SmtpMailProfessional06.exe
+bin\Debug\SmtpMailProfessional06.pdb
+obj\Debug\SmtpMailProfessional06.exe
+obj\Debug\SmtpMailProfessional06.pdb

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmtpMailProfessional06", "SmtpMailProfessional06\SmtpMailProfessional06.csproj", "{831F80BF-BFA9-4EF6-AC98-741353374A1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831F80BF-BFA9-4EF6-AC98-741353374A1D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
