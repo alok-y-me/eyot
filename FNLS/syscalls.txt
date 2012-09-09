@@ -1,0 +1,59 @@
+asmlinkage long sys_securerecv(int fd, void __user *ubuf, size_t size, unsigned flags, int __user *sec_level)
+{
+	long ret = sys_recv(fd, ubuf, size, flags);
+	
+	char kbuf[1024];
+	copy_from_user(kbuf, ubuf, ret);
+	printk(KERN_ALERT "Securerecv: kernel buffer = %s\n", kbuf);
+	int level;
+	if(kbuf[0] == '1'){
+		printk(KERN_ALERT "Securerecv: AH mode\n");
+		level = 1;
+	}
+	else if(kbuf[0] == '2'){
+		printk(KERN_ALERT "Securerecv: ESP mode\n");
+		level = 2;
+	}
+	else{
+		printk(KERN_ALERT "Securerecv: No security\n");
+		level = 0;
+	}
+	
+	copy_to_user(ubuf, kbuf+1, ret-1);
+	if (put_user(level, sec_level))
+		return -EFAULT;
+	
+	return ret-1;
+}
+
+
+asmlinkage long sys_securesend(int fd, void __user *ubuf, size_t size, unsigned flags, int sec_level)
+{
+	char kbuf[1024];
+	int len = strlen_user(ubuf);
+	if(len > 1023){
+		printk(KERN_ALERT "Securesend: user buffer more than 1023 bytes\n");
+		return -EINVAL;
+	}
+	if(sec_level == 1){
+		printk(KERN_ALERT "Securesend: AH mode\n");
+		kbuf[0] = '1';
+	}
+	else if(sec_level == 2){
+		printk(KERN_ALERT "Securesend: AH mode\n");
+		kbuf[0] = '2';
+	}
+	else{
+		printk(KERN_ALERT "Securesend: No security\n");
+		kbuf[0] = '0';
+	}
+	
+	copy_from_user((kbuf+1), ubuf, len);
+	printk("Securesend kernel buffer: %s\n", kbuf);
+	copy_to_user(ubuf, kbuf, len+1);
+	
+	long ret = sys_send(fd, ubuf, size+1, flags);
+	return ret-1;
+}
+
+
